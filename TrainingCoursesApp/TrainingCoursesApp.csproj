@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{12C17280-CF38-4126-8447-04DA3198821C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TrainingCoursesApp</RootNamespace>
+    <AssemblyName>TrainingCoursesApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>resources\icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="data\Category.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\ClassFrame.cs" />
+    <Compile Include="data\ClassHelpURL.cs" />
+    <Compile Include="data\ClassPort.cs" />
+    <Compile Include="data\Course.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\CourseEducatorTopic.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\CourseForm.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\CoursePeople.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Educator.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Organization.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\People.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Qualification.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\SelectCourseCourseID_Result.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\SelectCourseEducatorTopicIDCourse_Result.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\SelectCourseEducatorTopic_Result.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\SelectCourse_Result.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Status.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Topic.cs">
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\TrainingCoursesDataBaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrainingCoursesDataBaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\TrainingCoursesDataBaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrainingCoursesDataBaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\TrainingCoursesDataBaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TrainingCoursesDataBaseModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="pageApp\pageAdmin\PageAdminCourse.xaml.cs">
+      <DependentUpon>PageAdminCourse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pageApp\pageAdmin\PageAdminCourseDetail.xaml.cs">
+      <DependentUpon>PageAdminCourseDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pageApp\pageAdmin\PageAdminCoursePeople.xaml.cs">
+      <DependentUpon>PageAdminCoursePeople.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pageApp\pageAdmin\PageAdminGuide.xaml.cs">
+      <DependentUpon>PageAdminGuide.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pageApp\pageAdmin\PageAdminMain.xaml.cs">
+      <DependentUpon>PageAdminMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pageApp\pageAdmin\PageAdminOrganization.xaml.cs">
+      <DependentUpon>PageAdminOrganization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pageApp\pageAdmin\PageAdminReport.xaml.cs">
+      <DependentUpon>PageAdminReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pageApp\pageGeneral\PageAuthorization.xaml.cs">
+      <DependentUpon>PageAuthorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pageApp\pageListener\PageListenerCourse.xaml.cs">
+      <DependentUpon>PageListenerCourse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowMain.xaml.cs">
+      <DependentUpon>WindowMain.xaml</DependentUpon>
+    </Compile>
+    <Page Include="pageApp\pageAdmin\PageAdminCourse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pageApp\pageAdmin\PageAdminCourseDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pageApp\pageAdmin\PageAdminCoursePeople.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pageApp\pageAdmin\PageAdminGuide.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pageApp\pageAdmin\PageAdminMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pageApp\pageAdmin\PageAdminOrganization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pageApp\pageAdmin\PageAdminReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pageApp\pageGeneral\PageAuthorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pageApp\pageListener\PageListenerCourse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowStart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="WindowStart.xaml.cs">
+      <DependentUpon>WindowStart.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="WindowMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <EntityDeploy Include="data\TrainingCoursesDataBaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TrainingCoursesDataBaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="data\TrainingCoursesDataBaseModel.edmx.diagram">
+      <DependentUpon>TrainingCoursesDataBaseModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\BackMain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\icon.ico" />
+    <Resource Include="resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\TrainingCoursesDataBaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TrainingCoursesDataBaseModel.edmx</DependentUpon>
+      <LastGenOutput>TrainingCoursesDataBaseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="data\TrainingCoursesDataBaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TrainingCoursesDataBaseModel.edmx</DependentUpon>
+      <LastGenOutput>TrainingCoursesDataBaseModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

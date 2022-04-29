@@ -1,0 +1,49 @@
+﻿<Page x:Class="TrainingCoursesApp.pageApp.pageGeneral.PageAuthorization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainingCoursesApp.pageApp.pageGeneral"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1000"
+      Title="Курсы повышения квалификации">
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="130, 0">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Label Content="Логин:"
+                       Width="70"/>
+                <TextBox x:Name="txbxLogin"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Label Content="Пароль:"
+                       Width="70"/>
+                <TextBox x:Name="txbxPassword"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Label Content="Порт:"
+                       Width="70"/>
+                <TextBox x:Name="txbxPort"/>
+            </StackPanel>
+            <Button Content="Вход"
+                    x:Name="btnAuthorization"
+                    Click="btnAuthorization_Click"/>
+        </StackPanel>
+        <Image Source="/resources/icon.png"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               Opacity="0.7"
+               Stretch="Uniform"
+               Margin="80, 0"
+               Height="300"
+               Width="300"/>
+    </Grid>
+</Page>

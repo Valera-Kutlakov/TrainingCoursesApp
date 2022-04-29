@@ -1,0 +1,98 @@
+﻿<Page x:Class="TrainingCoursesApp.pageApp.pageAdmin.PageAdminGuide"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainingCoursesApp.pageApp.pageAdmin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1000"
+      Title="Квалификации и темы курсов">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Label Content="Список квалификаций"
+                   FontSize="20"
+                   Width="420"
+                   HorizontalContentAlignment="Center"/>
+            <StackPanel>
+                <Label Content="Название"
+                   Width="420"
+                   Margin="0"
+                   HorizontalContentAlignment="Left"/>
+            </StackPanel>
+            <ListView x:Name="lvQualification"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      HorizontalContentAlignment="Center"
+                      Background="Transparent"
+                      Height="240">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" 
+                                   HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBox Style="{StaticResource txbxView}"
+                                 Text="{Binding Title}"
+                                 Width="380"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <StackPanel Grid.Column="1"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Label Content="Список тем"
+                   FontSize="20"
+                   Width="420"
+                   HorizontalContentAlignment="Center"/>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Label Content="Название"
+                   Width="380"
+                   Margin="0"
+                   HorizontalContentAlignment="Left"/>
+                <Label Content="Часы"
+                   Width="55"
+                   Margin="0"
+                   HorizontalContentAlignment="Center"/>
+            </StackPanel>
+            <ListView x:Name="lvTopic"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      HorizontalContentAlignment="Center"
+                      Background="Transparent"
+                      Height="240">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" 
+                                   HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Style="{StaticResource txbxView}"
+                                 Text="{Binding Title}"
+                                 Width="380"
+                                 HorizontalAlignment="Left"/>
+                            <TextBox Style="{StaticResource txbxView}"
+                                 Text="{Binding CountHours}"
+                                 Width="40"
+                                 HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>

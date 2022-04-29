@@ -1,0 +1,1028 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище TrainingCoursesModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Program" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IDOrganization" Type="int" Nullable="false" />
+          <Property Name="PlanStart" Type="date" Nullable="false" />
+          <Property Name="PlanEnd" Type="date" Nullable="false" />
+          <Property Name="CountHours" Type="int" />
+          <Property Name="CountPeopleMax" Type="int" />
+          <Property Name="CountPeopleNow" Type="int" />
+          <Property Name="IDCourseForm" Type="int" Nullable="false" />
+          <Property Name="IDStatus" Type="int" Nullable="false" />
+          <Property Name="IDQualification" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Percon" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CourseEducatorTopic">
+          <Key>
+            <PropertyRef Name="IDCourse" />
+            <PropertyRef Name="IDEducator" />
+            <PropertyRef Name="IDTopic" />
+          </Key>
+          <Property Name="IDCourse" Type="int" Nullable="false" />
+          <Property Name="IDEducator" Type="int" Nullable="false" />
+          <Property Name="IDTopic" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CourseForm">
+          <Key>
+            <PropertyRef Name="CourseFormID" />
+          </Key>
+          <Property Name="CourseFormID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoursePeople">
+          <Key>
+            <PropertyRef Name="IDCourse" />
+            <PropertyRef Name="IDPeople" />
+          </Key>
+          <Property Name="IDCourse" Type="int" Nullable="false" />
+          <Property Name="IDPeople" Type="int" Nullable="false" />
+          <Property Name="RegistrationNum" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Educator">
+          <Key>
+            <PropertyRef Name="EducatorID" />
+          </Key>
+          <Property Name="EducatorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ThirdName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDOrganization" Type="int" Nullable="false" />
+          <Property Name="IDQualification" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EducatorTopic">
+          <Key>
+            <PropertyRef Name="IDEducator" />
+            <PropertyRef Name="IDTopic" />
+          </Key>
+          <Property Name="IDEducator" Type="int" Nullable="false" />
+          <Property Name="IDTopic" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+          </Key>
+          <Property Name="OrganizationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Region" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" />
+          <Property Name="House" Type="nvarchar" MaxLength="10" />
+          <Property Name="Corpus" Type="int" />
+          <Property Name="Rector" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Secretary" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="PeopleID" />
+          </Key>
+          <Property Name="PeopleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ThirdName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDCategory" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Qualification">
+          <Key>
+            <PropertyRef Name="QualificationID" />
+          </Key>
+          <Property Name="QualificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="TopicID" />
+          </Key>
+          <Property Name="TopicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CountHours" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Course_CourseForm">
+          <End Role="CourseForm" Type="Self.CourseForm" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseForm">
+              <PropertyRef Name="CourseFormID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="IDCourseForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_Organization">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="IDOrganization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_Qualification">
+          <End Role="Qualification" Type="Self.Qualification" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qualification">
+              <PropertyRef Name="QualificationID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="IDQualification" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="IDStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEducatorTopic_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="CourseEducatorTopic" Type="Self.CourseEducatorTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseEducatorTopic">
+              <PropertyRef Name="IDCourse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEducatorTopic_Educator">
+          <End Role="Educator" Type="Self.Educator" Multiplicity="1" />
+          <End Role="CourseEducatorTopic" Type="Self.CourseEducatorTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Educator">
+              <PropertyRef Name="EducatorID" />
+            </Principal>
+            <Dependent Role="CourseEducatorTopic">
+              <PropertyRef Name="IDEducator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEducatorTopic_Topic">
+          <End Role="Topic" Type="Self.Topic" Multiplicity="1" />
+          <End Role="CourseEducatorTopic" Type="Self.CourseEducatorTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topic">
+              <PropertyRef Name="TopicID" />
+            </Principal>
+            <Dependent Role="CourseEducatorTopic">
+              <PropertyRef Name="IDTopic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursePeople_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="CoursePeople" Type="Self.CoursePeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CoursePeople">
+              <PropertyRef Name="IDCourse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursePeople_People">
+          <End Role="People" Type="Self.People" Multiplicity="1" />
+          <End Role="CoursePeople" Type="Self.CoursePeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="PeopleID" />
+            </Principal>
+            <Dependent Role="CoursePeople">
+              <PropertyRef Name="IDPeople" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Educator_Organization">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+          <End Role="Educator" Type="Self.Educator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="Educator">
+              <PropertyRef Name="IDOrganization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Educator_Qualification">
+          <End Role="Qualification" Type="Self.Qualification" Multiplicity="1" />
+          <End Role="Educator" Type="Self.Educator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qualification">
+              <PropertyRef Name="QualificationID" />
+            </Principal>
+            <Dependent Role="Educator">
+              <PropertyRef Name="IDQualification" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EducatorTopic_Educator">
+          <End Role="Educator" Type="Self.Educator" Multiplicity="1" />
+          <End Role="EducatorTopic" Type="Self.EducatorTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Educator">
+              <PropertyRef Name="EducatorID" />
+            </Principal>
+            <Dependent Role="EducatorTopic">
+              <PropertyRef Name="IDEducator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EducatorTopic_Topic">
+          <End Role="Topic" Type="Self.Topic" Multiplicity="1" />
+          <End Role="EducatorTopic" Type="Self.EducatorTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topic">
+              <PropertyRef Name="TopicID" />
+            </Principal>
+            <Dependent Role="EducatorTopic">
+              <PropertyRef Name="IDTopic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_People_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="People" Type="Self.People" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="People">
+              <PropertyRef Name="IDCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddCoursePeople" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCourse" Type="int" Mode="In" />
+          <Parameter Name="idPeople" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteCoursePeople" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCourse" Type="int" Mode="In" />
+          <Parameter Name="idPeople" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RegistrationNumCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SelectCourseCourseID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCourse" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SelectCourseEducatorTopic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCourse" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SelectCourseEducatorTopicIDCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCourse" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SelectRegistrationNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="courseID" Type="int" Mode="In" />
+          <Parameter Name="peopleID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище TrainingCoursesModelContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseEducatorTopic" EntityType="Self.CourseEducatorTopic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseForm" EntityType="Self.CourseForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoursePeople" EntityType="Self.CoursePeople" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Educator" EntityType="Self.Educator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EducatorTopic" EntityType="Self.EducatorTopic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="People" EntityType="Self.People" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qualification" EntityType="Self.Qualification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Topic" EntityType="Self.Topic" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Course_CourseForm" Association="Self.FK_Course_CourseForm">
+            <End Role="CourseForm" EntitySet="CourseForm" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_Organization" Association="Self.FK_Course_Organization">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_Qualification" Association="Self.FK_Course_Qualification">
+            <End Role="Qualification" EntitySet="Qualification" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_Status" Association="Self.FK_Course_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEducatorTopic_Course" Association="Self.FK_CourseEducatorTopic_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourseEducatorTopic" EntitySet="CourseEducatorTopic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEducatorTopic_Educator" Association="Self.FK_CourseEducatorTopic_Educator">
+            <End Role="Educator" EntitySet="Educator" />
+            <End Role="CourseEducatorTopic" EntitySet="CourseEducatorTopic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEducatorTopic_Topic" Association="Self.FK_CourseEducatorTopic_Topic">
+            <End Role="Topic" EntitySet="Topic" />
+            <End Role="CourseEducatorTopic" EntitySet="CourseEducatorTopic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursePeople_Course" Association="Self.FK_CoursePeople_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CoursePeople" EntitySet="CoursePeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursePeople_People" Association="Self.FK_CoursePeople_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="CoursePeople" EntitySet="CoursePeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Educator_Organization" Association="Self.FK_Educator_Organization">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="Educator" EntitySet="Educator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Educator_Qualification" Association="Self.FK_Educator_Qualification">
+            <End Role="Qualification" EntitySet="Qualification" />
+            <End Role="Educator" EntitySet="Educator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EducatorTopic_Educator" Association="Self.FK_EducatorTopic_Educator">
+            <End Role="Educator" EntitySet="Educator" />
+            <End Role="EducatorTopic" EntitySet="EducatorTopic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EducatorTopic_Topic" Association="Self.FK_EducatorTopic_Topic">
+            <End Role="Topic" EntitySet="Topic" />
+            <End Role="EducatorTopic" EntitySet="EducatorTopic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_People_Category" Association="Self.FK_People_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="People" EntitySet="People" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TrainingCoursesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="People" Relationship="Self.FK_People_Category" FromRole="Category" ToRole="People" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Program" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDOrganization" Type="Int32" Nullable="false" />
+          <Property Name="PlanStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PlanEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CountHours" Type="Int32" />
+          <Property Name="CountPeopleMax" Type="Int32" />
+          <Property Name="CountPeopleNow" Type="Int32" />
+          <Property Name="IDCourseForm" Type="Int32" Nullable="false" />
+          <Property Name="IDStatus" Type="Int32" Nullable="false" />
+          <Property Name="IDQualification" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Percon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CourseForm" Relationship="Self.FK_Course_CourseForm" FromRole="Course" ToRole="CourseForm" />
+          <NavigationProperty Name="Organization" Relationship="Self.FK_Course_Organization" FromRole="Course" ToRole="Organization" />
+          <NavigationProperty Name="Qualification" Relationship="Self.FK_Course_Qualification" FromRole="Course" ToRole="Qualification" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Course_Status" FromRole="Course" ToRole="Status" />
+          <NavigationProperty Name="CourseEducatorTopic" Relationship="Self.FK_CourseEducatorTopic_Course" FromRole="Course" ToRole="CourseEducatorTopic" />
+          <NavigationProperty Name="CoursePeople" Relationship="Self.FK_CoursePeople_Course" FromRole="Course" ToRole="CoursePeople" />
+        </EntityType>
+        <EntityType Name="CourseEducatorTopic">
+          <Key>
+            <PropertyRef Name="IDCourse" />
+            <PropertyRef Name="IDEducator" />
+            <PropertyRef Name="IDTopic" />
+          </Key>
+          <Property Name="IDCourse" Type="Int32" Nullable="false" />
+          <Property Name="IDEducator" Type="Int32" Nullable="false" />
+          <Property Name="IDTopic" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_CourseEducatorTopic_Course" FromRole="CourseEducatorTopic" ToRole="Course" />
+          <NavigationProperty Name="Educator" Relationship="Self.FK_CourseEducatorTopic_Educator" FromRole="CourseEducatorTopic" ToRole="Educator" />
+          <NavigationProperty Name="Topic" Relationship="Self.FK_CourseEducatorTopic_Topic" FromRole="CourseEducatorTopic" ToRole="Topic" />
+        </EntityType>
+        <EntityType Name="CourseForm">
+          <Key>
+            <PropertyRef Name="CourseFormID" />
+          </Key>
+          <Property Name="CourseFormID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Course_CourseForm" FromRole="CourseForm" ToRole="Course" />
+        </EntityType>
+        <EntityType Name="CoursePeople">
+          <Key>
+            <PropertyRef Name="IDCourse" />
+            <PropertyRef Name="IDPeople" />
+          </Key>
+          <Property Name="IDCourse" Type="Int32" Nullable="false" />
+          <Property Name="IDPeople" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_CoursePeople_Course" FromRole="CoursePeople" ToRole="Course" />
+          <NavigationProperty Name="People" Relationship="Self.FK_CoursePeople_People" FromRole="CoursePeople" ToRole="People" />
+        </EntityType>
+        <EntityType Name="Educator">
+          <Key>
+            <PropertyRef Name="EducatorID" />
+          </Key>
+          <Property Name="EducatorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThirdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDOrganization" Type="Int32" Nullable="false" />
+          <Property Name="IDQualification" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CourseEducatorTopic" Relationship="Self.FK_CourseEducatorTopic_Educator" FromRole="Educator" ToRole="CourseEducatorTopic" />
+          <NavigationProperty Name="Organization" Relationship="Self.FK_Educator_Organization" FromRole="Educator" ToRole="Organization" />
+          <NavigationProperty Name="Qualification" Relationship="Self.FK_Educator_Qualification" FromRole="Educator" ToRole="Qualification" />
+          <NavigationProperty Name="Topic" Relationship="Self.EducatorTopic" FromRole="Educator" ToRole="Topic" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+          </Key>
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="House" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Corpus" Type="Int32" />
+          <Property Name="Rector" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Secretary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Course_Organization" FromRole="Organization" ToRole="Course" />
+          <NavigationProperty Name="Educator" Relationship="Self.FK_Educator_Organization" FromRole="Organization" ToRole="Educator" />
+        </EntityType>
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="PeopleID" />
+          </Key>
+          <Property Name="PeopleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThirdName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDCategory" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_People_Category" FromRole="People" ToRole="Category" />
+          <NavigationProperty Name="CoursePeople" Relationship="Self.FK_CoursePeople_People" FromRole="People" ToRole="CoursePeople" />
+        </EntityType>
+        <EntityType Name="Qualification">
+          <Key>
+            <PropertyRef Name="QualificationID" />
+          </Key>
+          <Property Name="QualificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Course_Qualification" FromRole="Qualification" ToRole="Course" />
+          <NavigationProperty Name="Educator" Relationship="Self.FK_Educator_Qualification" FromRole="Qualification" ToRole="Educator" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Course_Status" FromRole="Status" ToRole="Course" />
+        </EntityType>
+        <EntityType Name="Topic">
+          <Key>
+            <PropertyRef Name="TopicID" />
+          </Key>
+          <Property Name="TopicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountHours" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CourseEducatorTopic" Relationship="Self.FK_CourseEducatorTopic_Topic" FromRole="Topic" ToRole="CourseEducatorTopic" />
+          <NavigationProperty Name="Educator" Relationship="Self.EducatorTopic" FromRole="Topic" ToRole="Educator" />
+        </EntityType>
+        <Association Name="FK_People_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="People" Type="Self.People" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="People">
+              <PropertyRef Name="IDCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_CourseForm">
+          <End Role="CourseForm" Type="Self.CourseForm" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseForm">
+              <PropertyRef Name="CourseFormID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="IDCourseForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_Organization">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="IDOrganization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_Qualification">
+          <End Role="Qualification" Type="Self.Qualification" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qualification">
+              <PropertyRef Name="QualificationID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="IDQualification" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="IDStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEducatorTopic_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="CourseEducatorTopic" Type="Self.CourseEducatorTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseEducatorTopic">
+              <PropertyRef Name="IDCourse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursePeople_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="CoursePeople" Type="Self.CoursePeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CoursePeople">
+              <PropertyRef Name="IDCourse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEducatorTopic_Educator">
+          <End Role="Educator" Type="Self.Educator" Multiplicity="1" />
+          <End Role="CourseEducatorTopic" Type="Self.CourseEducatorTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Educator">
+              <PropertyRef Name="EducatorID" />
+            </Principal>
+            <Dependent Role="CourseEducatorTopic">
+              <PropertyRef Name="IDEducator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseEducatorTopic_Topic">
+          <End Role="Topic" Type="Self.Topic" Multiplicity="1" />
+          <End Role="CourseEducatorTopic" Type="Self.CourseEducatorTopic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Topic">
+              <PropertyRef Name="TopicID" />
+            </Principal>
+            <Dependent Role="CourseEducatorTopic">
+              <PropertyRef Name="IDTopic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursePeople_People">
+          <End Role="People" Type="Self.People" Multiplicity="1" />
+          <End Role="CoursePeople" Type="Self.CoursePeople" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="PeopleID" />
+            </Principal>
+            <Dependent Role="CoursePeople">
+              <PropertyRef Name="IDPeople" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Educator_Organization">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+          <End Role="Educator" Type="Self.Educator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="Educator">
+              <PropertyRef Name="IDOrganization" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Educator_Qualification">
+          <End Role="Qualification" Type="Self.Qualification" Multiplicity="1" />
+          <End Role="Educator" Type="Self.Educator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qualification">
+              <PropertyRef Name="QualificationID" />
+            </Principal>
+            <Dependent Role="Educator">
+              <PropertyRef Name="IDQualification" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EducatorTopic">
+          <End Role="Educator" Type="Self.Educator" Multiplicity="*" />
+          <End Role="Topic" Type="Self.Topic" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="TrainingCoursesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Course" EntityType="Self.Course" />
+          <EntitySet Name="CourseEducatorTopic" EntityType="Self.CourseEducatorTopic" />
+          <EntitySet Name="CourseForm" EntityType="Self.CourseForm" />
+          <EntitySet Name="CoursePeople" EntityType="Self.CoursePeople" />
+          <EntitySet Name="Educator" EntityType="Self.Educator" />
+          <EntitySet Name="Organization" EntityType="Self.Organization" />
+          <EntitySet Name="People" EntityType="Self.People" />
+          <EntitySet Name="Qualification" EntityType="Self.Qualification" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Topic" EntityType="Self.Topic" />
+          <AssociationSet Name="FK_People_Category" Association="Self.FK_People_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="People" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_CourseForm" Association="Self.FK_Course_CourseForm">
+            <End Role="CourseForm" EntitySet="CourseForm" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_Organization" Association="Self.FK_Course_Organization">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_Qualification" Association="Self.FK_Course_Qualification">
+            <End Role="Qualification" EntitySet="Qualification" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_Status" Association="Self.FK_Course_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEducatorTopic_Course" Association="Self.FK_CourseEducatorTopic_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourseEducatorTopic" EntitySet="CourseEducatorTopic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursePeople_Course" Association="Self.FK_CoursePeople_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CoursePeople" EntitySet="CoursePeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEducatorTopic_Educator" Association="Self.FK_CourseEducatorTopic_Educator">
+            <End Role="Educator" EntitySet="Educator" />
+            <End Role="CourseEducatorTopic" EntitySet="CourseEducatorTopic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseEducatorTopic_Topic" Association="Self.FK_CourseEducatorTopic_Topic">
+            <End Role="Topic" EntitySet="Topic" />
+            <End Role="CourseEducatorTopic" EntitySet="CourseEducatorTopic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursePeople_People" Association="Self.FK_CoursePeople_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="CoursePeople" EntitySet="CoursePeople" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Educator_Organization" Association="Self.FK_Educator_Organization">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="Educator" EntitySet="Educator" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Educator_Qualification" Association="Self.FK_Educator_Qualification">
+            <End Role="Qualification" EntitySet="Qualification" />
+            <End Role="Educator" EntitySet="Educator" />
+          </AssociationSet>
+          <AssociationSet Name="EducatorTopic" Association="Self.EducatorTopic">
+            <End Role="Educator" EntitySet="Educator" />
+            <End Role="Topic" EntitySet="Topic" />
+          </AssociationSet>
+          <FunctionImport Name="AddCoursePeople">
+            <Parameter Name="idCourse" Mode="In" Type="Int32" />
+            <Parameter Name="idPeople" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteCoursePeople">
+            <Parameter Name="idCourse" Mode="In" Type="Int32" />
+            <Parameter Name="idPeople" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RegistrationNumCreate" />
+          <FunctionImport Name="SelectCourse" ReturnType="Collection(TrainingCoursesModel.SelectCourse_Result)" />
+          <FunctionImport Name="SelectCourseCourseID" ReturnType="Collection(TrainingCoursesModel.SelectCourseCourseID_Result)">
+          <Parameter Name="idCourse" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectCourseEducatorTopic" ReturnType="Collection(TrainingCoursesModel.SelectCourseEducatorTopic_Result)">
+          <Parameter Name="idCourse" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectRegistrationNumber" ReturnType="Collection(String)">
+            <Parameter Name="courseID" Mode="In" Type="Int32" />
+            <Parameter Name="peopleID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SelectCourseEducatorTopicIDCourse" ReturnType="Collection(TrainingCoursesModel.SelectCourseEducatorTopicIDCourse_Result)">
+            <Parameter Name="idCourse" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SelectCourse_Result">
+          <Property Type="Int32" Name="CourseID" Nullable="false" />
+          <Property Type="String" Name="Program" Nullable="false" />
+          <Property Type="DateTime" Name="PlanStart" Nullable="false" />
+          <Property Type="DateTime" Name="PlanEnd" Nullable="false" />
+          <Property Type="String" Name="StatusTitle" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="OrganizationTitle" Nullable="false" />
+          <Property Type="String" Name="QualificationTitle" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CountHours" Nullable="true" />
+          <Property Type="Int32" Name="CountPeopleNow" Nullable="true" />
+          <Property Type="Int32" Name="CountPeopleMax" Nullable="true" />
+          <Property Type="String" Name="CourseFormTitle" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SelectCourseCourseID_Result">
+          <Property Type="Int32" Name="CourseID" Nullable="false" />
+          <Property Type="String" Name="Program" Nullable="false" />
+          <Property Type="DateTime" Name="PlanStart" Nullable="false" />
+          <Property Type="DateTime" Name="PlanEnd" Nullable="false" />
+          <Property Type="String" Name="StatusTitle" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="OrganizationTitle" Nullable="false" />
+          <Property Type="String" Name="QualificationTitle" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CountHours" Nullable="true" />
+          <Property Type="Int32" Name="CountPeopleNow" Nullable="true" />
+          <Property Type="Int32" Name="CountPeopleMax" Nullable="true" />
+          <Property Type="String" Name="CourseFormTitle" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SelectCourseEducatorTopic_Result">
+          <Property Type="Int32" Name="IDCourse" Nullable="false" />
+          <Property Type="Int32" Name="IDEducator" Nullable="false" />
+          <Property Type="Int32" Name="IDTopic" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SelectCourseEducatorTopicIDCourse_Result">
+          <Property Type="Int32" Name="IDCourse" Nullable="false" />
+          <Property Type="Int32" Name="IDEducator" Nullable="false" />
+          <Property Type="Int32" Name="IDTopic" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SecondName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TrainingCoursesModelContainer" CdmEntityContainer="TrainingCoursesEntities">
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="TrainingCoursesModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course">
+            <EntityTypeMapping TypeName="TrainingCoursesModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="IDOrganization" ColumnName="IDOrganization" />
+                <ScalarProperty Name="PlanStart" ColumnName="PlanStart" />
+                <ScalarProperty Name="PlanEnd" ColumnName="PlanEnd" />
+                <ScalarProperty Name="CountHours" ColumnName="CountHours" />
+                <ScalarProperty Name="CountPeopleMax" ColumnName="CountPeopleMax" />
+                <ScalarProperty Name="CountPeopleNow" ColumnName="CountPeopleNow" />
+                <ScalarProperty Name="IDCourseForm" ColumnName="IDCourseForm" />
+                <ScalarProperty Name="IDStatus" ColumnName="IDStatus" />
+                <ScalarProperty Name="IDQualification" ColumnName="IDQualification" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Percon" ColumnName="Percon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseEducatorTopic">
+            <EntityTypeMapping TypeName="TrainingCoursesModel.CourseEducatorTopic">
+              <MappingFragment StoreEntitySet="CourseEducatorTopic">
+                <ScalarProperty Name="IDCourse" ColumnName="IDCourse" />
+                <ScalarProperty Name="IDEducator" ColumnName="IDEducator" />
+                <ScalarProperty Name="IDTopic" ColumnName="IDTopic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseForm">
+            <EntityTypeMapping TypeName="TrainingCoursesModel.CourseForm">
+              <MappingFragment StoreEntitySet="CourseForm">
+                <ScalarProperty Name="CourseFormID" ColumnName="CourseFormID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoursePeople">
+            <EntityTypeMapping TypeName="TrainingCoursesModel.CoursePeople">
+              <MappingFragment StoreEntitySet="CoursePeople">
+                <ScalarProperty Name="IDCourse" ColumnName="IDCourse" />
+                <ScalarProperty Name="IDPeople" ColumnName="IDPeople" />
+                <ScalarProperty Name="RegistrationNum" ColumnName="RegistrationNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Educator">
+            <EntityTypeMapping TypeName="TrainingCoursesModel.Educator">
+              <MappingFragment StoreEntitySet="Educator">
+                <ScalarProperty Name="EducatorID" ColumnName="EducatorID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="ThirdName" ColumnName="ThirdName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IDOrganization" ColumnName="IDOrganization" />
+                <ScalarProperty Name="IDQualification" ColumnName="IDQualification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organization">
+            <EntityTypeMapping TypeName="TrainingCoursesModel.Organization">
+              <MappingFragment StoreEntitySet="Organization">
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Corpus" ColumnName="Corpus" />
+                <ScalarProperty Name="Rector" ColumnName="Rector" />
+                <ScalarProperty Name="Secretary" ColumnName="Secretary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="TrainingCoursesModel.People">
+              <MappingFragment StoreEntitySet="People">
+                <ScalarProperty Name="PeopleID" ColumnName="PeopleID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="ThirdName" ColumnName="ThirdName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qualification">
+            <EntityTypeMapping TypeName="TrainingCoursesModel.Qualification">
+              <MappingFragment StoreEntitySet="Qualification">
+                <ScalarProperty Name="QualificationID" ColumnName="QualificationID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="TrainingCoursesModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Topic">
+            <EntityTypeMapping TypeName="TrainingCoursesModel.Topic">
+              <MappingFragment StoreEntitySet="Topic">
+                <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CountHours" ColumnName="CountHours" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="EducatorTopic" TypeName="TrainingCoursesModel.EducatorTopic" StoreEntitySet="EducatorTopic">
+            <EndProperty Name="Educator">
+              <ScalarProperty Name="EducatorID" ColumnName="IDEducator" />
+            </EndProperty>
+            <EndProperty Name="Topic">
+              <ScalarProperty Name="TopicID" ColumnName="IDTopic" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="AddCoursePeople" FunctionName="Хранилище TrainingCoursesModel.AddCoursePeople" />
+          <FunctionImportMapping FunctionImportName="DeleteCoursePeople" FunctionName="Хранилище TrainingCoursesModel.DeleteCoursePeople" />
+          <FunctionImportMapping FunctionImportName="RegistrationNumCreate" FunctionName="Хранилище TrainingCoursesModel.RegistrationNumCreate" />
+          <FunctionImportMapping FunctionImportName="SelectCourse" FunctionName="Хранилище TrainingCoursesModel.SelectCourse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TrainingCoursesModel.SelectCourse_Result">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="PlanStart" ColumnName="PlanStart" />
+                <ScalarProperty Name="PlanEnd" ColumnName="PlanEnd" />
+                <ScalarProperty Name="StatusTitle" ColumnName="StatusTitle" />
+                <ScalarProperty Name="OrganizationTitle" ColumnName="OrganizationTitle" />
+                <ScalarProperty Name="QualificationTitle" ColumnName="QualificationTitle" />
+                <ScalarProperty Name="CountHours" ColumnName="CountHours" />
+                <ScalarProperty Name="CountPeopleNow" ColumnName="CountPeopleNow" />
+                <ScalarProperty Name="CountPeopleMax" ColumnName="CountPeopleMax" />
+                <ScalarProperty Name="CourseFormTitle" ColumnName="CourseFormTitle" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectCourseCourseID" FunctionName="Хранилище TrainingCoursesModel.SelectCourseCourseID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TrainingCoursesModel.SelectCourseCourseID_Result">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="Program" ColumnName="Program" />
+                <ScalarProperty Name="PlanStart" ColumnName="PlanStart" />
+                <ScalarProperty Name="PlanEnd" ColumnName="PlanEnd" />
+                <ScalarProperty Name="StatusTitle" ColumnName="StatusTitle" />
+                <ScalarProperty Name="OrganizationTitle" ColumnName="OrganizationTitle" />
+                <ScalarProperty Name="QualificationTitle" ColumnName="QualificationTitle" />
+                <ScalarProperty Name="CountHours" ColumnName="CountHours" />
+                <ScalarProperty Name="CountPeopleNow" ColumnName="CountPeopleNow" />
+                <ScalarProperty Name="CountPeopleMax" ColumnName="CountPeopleMax" />
+                <ScalarProperty Name="CourseFormTitle" ColumnName="CourseFormTitle" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectCourseEducatorTopic" FunctionName="Хранилище TrainingCoursesModel.SelectCourseEducatorTopic">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TrainingCoursesModel.SelectCourseEducatorTopic_Result">
+                <ScalarProperty Name="IDCourse" ColumnName="IDCourse" />
+                <ScalarProperty Name="IDEducator" ColumnName="IDEducator" />
+                <ScalarProperty Name="IDTopic" ColumnName="IDTopic" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SelectRegistrationNumber" FunctionName="Хранилище TrainingCoursesModel.SelectRegistrationNumber" />
+          <FunctionImportMapping FunctionImportName="SelectCourseEducatorTopicIDCourse" FunctionName="Хранилище TrainingCoursesModel.SelectCourseEducatorTopicIDCourse">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TrainingCoursesModel.SelectCourseEducatorTopicIDCourse_Result">
+                <ScalarProperty Name="IDCourse" ColumnName="IDCourse" />
+                <ScalarProperty Name="IDEducator" ColumnName="IDEducator" />
+                <ScalarProperty Name="IDTopic" ColumnName="IDTopic" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

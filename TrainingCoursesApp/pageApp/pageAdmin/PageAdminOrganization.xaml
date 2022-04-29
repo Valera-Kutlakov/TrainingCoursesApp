@@ -1,0 +1,60 @@
+﻿<Page x:Class="TrainingCoursesApp.pageApp.pageAdmin.PageAdminOrganization"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainingCoursesApp.pageApp.pageAdmin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1000"
+      Title="Образовательные организации">
+
+    <Grid>
+        <ListView x:Name="lvOrganization"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  HorizontalContentAlignment="Center"
+                  Background="Transparent"
+                  Margin="0, 10, 0, 70">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" 
+                               HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <StackPanel Orientation="Vertical"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center">
+                            <TextBox Style="{StaticResource txbxView}"
+                                     Text="{Binding Title}"
+                                     Width="1000"
+                                     FontSize="20"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Style="{StaticResource txbxView}"
+                                         Text="{Binding Region, StringFormat=Регион: {0}\,, TargetNullValue=Регион отсутствует\,}"/>
+                                <TextBox Style="{StaticResource txbxView}"
+                                         Text="{Binding City,   StringFormat=г. {0}\,, TargetNullValue=город отсутствует\,}"/>
+                                <TextBox Style="{StaticResource txbxView}"
+                                         Text="{Binding Street, StringFormat=ул. {0}\,, TargetNullValue=улица отсутствует\,}"/>
+                                <TextBox Style="{StaticResource txbxView}"
+                                         Text="{Binding House,  StringFormat=д. {0}\,, TargetNullValue=дом отсутствует\,}"/>
+                                <TextBox Style="{StaticResource txbxView}"
+                                         Text="{Binding Corpus, StringFormat=кор. {0}, TargetNullValue=корпус отсутствует}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Margin="10">
+            <Button Content="Отчёт о работе"
+                    x:Name="btnReportOrganization"
+                    Click="btnReportOrganization_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

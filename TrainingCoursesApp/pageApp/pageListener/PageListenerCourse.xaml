@@ -1,0 +1,86 @@
+﻿<Page x:Class="TrainingCoursesApp.pageApp.pageListener.PageListenerCourse"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainingCoursesApp.pageApp.pageListener"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1000"
+      Title="Список моих курсов">
+    <Grid>
+        <ListView x:Name="lvCourse"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  HorizontalContentAlignment="Center"
+                  Background="White"
+                  Margin="10, 10, 10, 70">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" 
+                               HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="#d0dff5">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Margin="0, 0, 50, 0">
+                            <TextBox Style="{StaticResource txbxView}"
+                                     Text="{Binding PlanStart, StringFormat=С {0} }"/>
+                            <TextBox Style="{StaticResource txbxView}"
+                                     Text="{Binding PlanEnd, StringFormat=по {0}}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Margin="0, 0, 50, 0">
+                            <TextBox Style="{StaticResource txbxView}"
+                                     Text="{Binding StatusTitle, StringFormat=Статус: {0} }"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Margin="0, 35, 0, 0"
+                                    Width="940">
+                            <TextBox Style="{StaticResource txbxView}"
+                                     Text="{Binding Program}"
+                                     FontSize="20"/>
+                            <StackPanel Orientation="Vertical"
+                                        HorizontalAlignment="Left">
+                                <TextBox Style="{StaticResource txbxView}"
+                                         Text="{Binding OrganizationTitle, StringFormat=Образовательная организация: {0}}"
+                                         Width="900"/>
+                                <TextBox Style="{StaticResource txbxView}"
+                                         Text="{Binding QualificationTitle, StringFormat=Присваиваемая квалификация: {0}}"
+                                         Width="900"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Style="{StaticResource txbxView}"
+                                         Text="{Binding CountHours,   StringFormat=Часы: {0}, TargetNullValue=Часы не назначены}"
+                                         Width="200"/>
+                                <TextBox Style="{StaticResource txbxView}"
+                                         Text="{Binding CountPeopleNow, StringFormat=Участники: {0} , TargetNullValue=Участники: 0}"/>
+                                <TextBox Style="{StaticResource txbxView}"
+                                         Text="{Binding CountPeopleMax,  StringFormat=из {0}, TargetNullValue= из ∞}"
+                                         Width="100"/>
+                                <TextBox Style="{StaticResource txbxView}"
+                                         Text="{Binding CourseFormTitle, StringFormat=Форма обучения: {0}, TargetNullValue=корпус отсутствует}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom">
+            <Button x:Name="btnMyCourses"
+                    Content="Мои курсы"
+                    Click="btnMyCourses_Click"/>
+            <Button x:Name="btnAllCourses"
+                    Content="Все курсы"
+                    Click="btnAllCourses_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

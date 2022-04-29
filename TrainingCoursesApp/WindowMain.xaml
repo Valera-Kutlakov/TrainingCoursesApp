@@ -1,0 +1,38 @@
+﻿<Window x:Class="TrainingCoursesApp.WindowMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrainingCoursesApp"
+        mc:Ignorable="d"
+        Title="Курсы повышения квалификации" 
+        Height="600" Width="1000"
+        Icon="/resources/icon.png"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Image Source="/resources/BackMain.png"
+               Stretch="Fill"/>
+        <Button Background="Transparent"
+                BorderThickness="0"
+                Width="40"
+                x:Name="btnBack"
+                Click="btnBack_Click"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="10, 28, 0, 0">
+            <Image Source="/resources/Back.png"/>
+        </Button>
+        <Frame VerticalAlignment="Center"
+               x:Name="frameMain"
+               NavigationUIVisibility="Hidden"
+               Margin="0, 20, 0, 0"
+               Height="450"/>
+        <Label Content= "{Binding ElementName=frameMain, 
+                                  Path=Content.Title}"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="60, 20"
+               FontSize="30"/>
+    </Grid>
+</Window>

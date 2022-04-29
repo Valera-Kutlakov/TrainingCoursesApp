@@ -1,0 +1,64 @@
+﻿<Page x:Class="TrainingCoursesApp.pageApp.pageAdmin.PageAdminCourseDetail"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainingCoursesApp.pageApp.pageAdmin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1000"
+      Title="Темы курсов и преподаватели">
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Label Content="Тема курса"
+                   Width="500"
+                   Margin="0"
+                   HorizontalContentAlignment="Left"/>
+                <Label Content="Преподаватель"
+                   Width="450"
+                   Margin="0"
+                   HorizontalContentAlignment="Left"/>
+            </StackPanel>
+            <ListView x:Name="lvCourseDetail"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      HorizontalContentAlignment="Center"
+                      Background="Transparent"
+                      Height="320">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" 
+                                   HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Style="{StaticResource txbxView}"
+                                 Text="{Binding Title}"
+                                 Width="500"
+                                 HorizontalAlignment="Left"/>
+                            <TextBox Style="{StaticResource txbxView}"
+                                 Text="{Binding FirstName}"
+                                 Width="225"
+                                 HorizontalAlignment="Left"/>
+                            <TextBox Style="{StaticResource txbxView}"
+                                 Text="{Binding SecondName}"
+                                 Width="225"
+                                 HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="10">
+                <Button x:Name="btnPeople"
+                        Content="Список обучающихся"
+                        Click="btnPeople_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
